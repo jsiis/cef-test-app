@@ -1,0 +1,11 @@
+# Vim temp, swap, backup, session files
+*~
+*.swp
+Session.vim
+
+# CMake build output
+build
+install
+
+# Makefile temp files
+run-cmake
