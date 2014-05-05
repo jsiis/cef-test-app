@@ -41,7 +41,8 @@ void TestHandler::OnAfterCreated(CefRefPtr<CefBrowser> browser) {
 void TestHandler::OnBeforeClose(CefRefPtr<CefBrowser> browser) {
     REQUIRE_UI_THREAD();
     // Remove from the list of existing browsers
-    for (auto it = browsers_.begin(); it != browsers_.end(); ++it) {
+    CefBrowserList::iterator it = browsers_.begin();
+    for (; it != browsers_.end(); ++it) {
         if ((*it)->IsSame(browser)) {
             browsers_.erase(it);
             break;
@@ -82,7 +83,8 @@ void TestHandler::CloseAllBrowsers(bool force_close) {
     }
     if (browsers_.empty()) return;
 
-    for (auto it = browsers_.begin(); it != browsers_.end(); ++it) {
+    CefBrowserList::iterator it = browsers_.begin();
+    for (; it != browsers_.end(); ++it) {
         (*it)->GetHost()->CloseBrowser(force_close);
     }
 }
