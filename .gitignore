@@ -9,3 +9,7 @@ install
 
 # Makefile temp files
 run-cmake
+
+# Misc. temps
+*.log
+*.bak
